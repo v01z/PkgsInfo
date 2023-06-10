@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">PkgsInfo</string>
+    <string name="default_query">/proc/cpuinfo</string>
+    <string name="update_string">Update</string>
 </resources>

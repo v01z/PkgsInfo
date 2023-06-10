@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -33,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
         // Example of a call to a native method
         TextView tv = binding.sampleText;
-        tv.setText(stringFromJNI());
+        tv.setMovementMethod(new ScrollingMovementMethod());
+        tv.setText(getFileTextBuffer("/proc/cpuinfo"));
 
         final PackageManager pm = getPackageManager();
 //get a list of installed apps.
@@ -44,6 +46,19 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG, "Source dir : " + packageInfo.sourceDir);
             Log.d(TAG, "Launch Activity :" + pm.getLaunchIntentForPackage(packageInfo.packageName));
         }
+        //
+        tv.append("\nxxxxxxxxxxxxxxxxxxxxxx\n");
+        tv.append("\nCount of installed pkgs: " + packages.size());
+        tv.append("\nxxxxxxxxxxxxxxxxxxxxxx\n");
+        //
+        for (ApplicationInfo packageInfo : packages) {
+            tv.append("\n\nInstalled package :" + packageInfo.packageName);
+            tv.append("\nSource dir : " + packageInfo.sourceDir);
+            tv.append("\nLaunch Activity :" + pm.getLaunchIntentForPackage(packageInfo.packageName));
+            tv.append("\n***********************\n");
+        }
+        tv.append("\n\n********* Have a nice day! *****************\n\n");
+
 // the getLaunchIntentForPackage returns an intent that you can use with startActivity()
 
     }
@@ -52,5 +67,5 @@ public class MainActivity extends AppCompatActivity {
      * A native method that is implemented by the 'pkgsinfo' native library,
      * which is packaged with this application.
      */
-    public native String stringFromJNI();
+    public native String getFileTextBuffer(String str);
 }
