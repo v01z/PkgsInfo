@@ -1,5 +1,6 @@
 ## xxxxxx
-# PkgsInfo
+# PackagesINfo
+# (old PkgsInfo)
 ## xxxxxx
 
 
