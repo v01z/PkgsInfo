@@ -16,12 +16,13 @@
             android:layout_height="wrap_content"
             android:inputType="text"
             android:text="@string/default_grep"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:autofillHints="name"
             />
         <Button
             android:id="@+id/update_button"
             android:text="@string/update_string"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
