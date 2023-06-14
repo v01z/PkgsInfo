@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         tv.setText("");
 
         tv.append("\nxxxxxxxxxxxxxxxxxxxxxx\n");
+        tv.append("\nKernel: " + nativeUname(2) +"\n"); // magic
+        tv.append("\nxxxxxxxxxxxxxxxxxxxxxx\n");
         tv.append("\nCount of installed pkgs: " + packages.size());
         tv.append("\nxxxxxxxxxxxxxxxxxxxxxx\n");
 
@@ -108,4 +110,5 @@ public class MainActivity extends AppCompatActivity {
      * which is packaged with this application.
      */
     public native String getFileTextBuffer(String str);
+    public native String nativeUname(int query);
 }
