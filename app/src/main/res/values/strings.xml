@@ -2,4 +2,5 @@
     <string name="app_name">PkgsInfo</string>
     <string name="default_grep">*</string>
     <string name="update_string">Update</string>
+    <string name="android_settings_btn_lbl">Android settings</string>
 </resources>

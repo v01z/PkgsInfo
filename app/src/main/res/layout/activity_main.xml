@@ -25,7 +25,13 @@
             android:layout_marginStart="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-
+        </Button>
+        <Button
+            android:id="@+id/android_settings_button"
+            android:text="@string/android_settings_btn_lbl"
+            android:layout_marginStart="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
         </Button>
     </LinearLayout>
 

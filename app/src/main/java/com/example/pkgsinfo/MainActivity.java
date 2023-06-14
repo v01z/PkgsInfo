@@ -2,9 +2,11 @@ package com.example.pkgsinfo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
@@ -87,6 +89,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button androidSettingsButton = findViewById(R.id.android_settings_button);
+        androidSettingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Settings.ACTION_SETTINGS));
+                finish();
+            }
+        });
         addInfo();
 
         tv.append("\n\n********* Have a nice day! *****************\n\n");
