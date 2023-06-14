@@ -17,7 +17,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = "myLogs";
+    private static final String TAG = "PN_Logs";
 
     // Used to load the 'pkgsinfo' library on application startup.
     static {
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         tv.setText("");
 
         tv.append("\nxxxxxxxxxxxxxxxxxxxxxx\n");
-        tv.append("\nKernel: " + nativeUname(2) +"\n"); // magic
+        tv.append("\n" + nativeUname(5) +"\n"); // magic
         tv.append("\nxxxxxxxxxxxxxxxxxxxxxx\n");
         tv.append("\nCount of installed pkgs: " + packages.size());
         tv.append("\nxxxxxxxxxxxxxxxxxxxxxx\n");

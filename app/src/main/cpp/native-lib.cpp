@@ -9,6 +9,7 @@
 #define PNCODE_RELEASE 2
 #define PNCODE_VERSION 3
 #define PNCODE_MACHINE 4
+#define PNCODE_UNAME_ALL 5
 #define PNCODE_UNKNOWN "UKNOWN CODE"
 
 
@@ -59,7 +60,7 @@ Java_com_example_pkgsinfo_MainActivity_nativeUname(
 
     struct utsname buffer;
     if (uname(&buffer) != 0)
-        retStrValue = "uname error\n";
+        retStrValue = "uname() error\n";
     else
         switch((int)queryCode) {
         case PNCODE_SYSNAME:
@@ -77,6 +78,13 @@ Java_com_example_pkgsinfo_MainActivity_nativeUname(
         case PNCODE_MACHINE:
             retStrValue = buffer.machine;
             break;
+        case PNCODE_UNAME_ALL:
+            retStrValue = std::string(buffer.sysname) + '\n'
+                    + std::string(buffer.nodename) + '\n'
+                    + std::string(buffer.release) + '\n'
+                    + std::string(buffer.version) + '\n'
+                    + std::string(buffer.machine) + '\n';
+                break;
         default:
             retStrValue = PNCODE_UNKNOWN;
             break;
