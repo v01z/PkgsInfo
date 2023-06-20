@@ -22,6 +22,7 @@ add_library( # Sets the name of the library.
         # Sets the library as a shared library.
         SHARED
 
+        get_filenames.cpp
         # Provides a relative path to your source file(s).
         native-lib.cpp)
 

@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -87,7 +88,20 @@ public class MainActivity extends AppCompatActivity {
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               addInfo();
+                if(editText.getText().toString().equals(":ls"))
+                {
+                    Log.d(TAG, "Equals :ls");
+
+                    String fileList = getFileList(".");
+
+                    Log.d(TAG, fileList);
+
+                    //tv.setText(getFileList("."));
+                    tv.setText(fileList);
+                }
+                else{
+                    addInfo();
+                }
             }
         });
 
@@ -109,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
      * A native method that is implemented by the 'pkgsinfo' native library,
      * which is packaged with this application.
      */
-    public native String getFileTextBuffer(String str);
+    public native String getFileList(String path);
+    public native String getFileTextBuffer(String filepath);
     public native String nativeUname(int query);
 }

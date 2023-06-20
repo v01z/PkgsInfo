@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include <sys/utsname.h>
+#include "get_filenames.h"
 
 #define PNCODE_SYSNAME 0
 #define PNCODE_NODE_NAME 1
@@ -26,6 +27,24 @@ std::string stdStringFromJString(JNIEnv *env, jstring inputJString){
     }
 
     return retValueStr;
+}
+extern "C" JNIEXPORT jstring JNICALL
+Java_com_example_pkgsinfo_MainActivity_getFileList(
+        JNIEnv* env,
+        jobject /* this */, jstring currentPath) {
+
+    std::string fileListStr = stdStringFromJString(env, currentPath);
+    std::vector<std::string> pathsVec{};
+
+    //get_files(pathsVec, stdStringFromJString(env, currentPath));
+    get_files(pathsVec, fileListStr);
+
+    for (const auto &filePath : pathsVec)
+    {
+        fileListStr.append(filePath);
+    }
+
+    return env->NewStringUTF(fileListStr.c_str());
 }
 
 extern "C" JNIEXPORT jstring JNICALL
