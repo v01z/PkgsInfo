@@ -3,5 +3,4 @@
 #include <vector>
 #include <string>
 
-void get_files (std::vector<std::string> &paths,
-		const std::string &current_path);
+const std::vector<std::string> get_files (const std::string &current_path);

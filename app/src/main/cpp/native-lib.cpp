@@ -34,14 +34,11 @@ Java_com_example_pkgsinfo_MainActivity_getFileList(
         jobject /* this */, jstring currentPath) {
 
     std::string fileListStr = stdStringFromJString(env, currentPath);
-    std::vector<std::string> pathsVec{};
-
-    //get_files(pathsVec, stdStringFromJString(env, currentPath));
-    get_files(pathsVec, fileListStr);
+    std::vector<std::string> pathsVec = get_files(fileListStr);
 
     for (const auto &filePath : pathsVec)
     {
-        fileListStr.append(filePath);
+        fileListStr.append(filePath + "\n");
     }
 
     return env->NewStringUTF(fileListStr.c_str());

@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
                 {
                     Log.d(TAG, "Equals :ls");
 
-                    String fileList = getFileList(".");
+                    String fileList = getFileList("/storage/emulated/0");
 
                     Log.d(TAG, fileList);
 
